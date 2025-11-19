@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles/style.css">
+    
+</head>
+<body>
+<!-- Logic is handled in Javascript just change the data-prompt value to change images that show up -->
+<button class = "navigation" data-prompt="portrait">Portraits</button>
+<button class = "navigation" data-prompt="Landscapes">Landscapes</button>
+
+<div><input type="text" placeholder="Search.." class="search" onkeydown="search(this)"/> <button id = "pause"><i id = "pausesymbol"></i></button></div>
+
+<div id="timer"></div>
+
+<!-- Automatically updated image element with hotlink to orginal -->
+<a id="hotlink" target="_blank"><img id="photo" style="max-width:100%; display:block; margin-bottom:10px;"></a>
+<!-- Creator Credits don't remove -->
+<div>Photo by <a id="creator" target="_blank"></a> <button id="lock"><i id="locksymbol" class="fa-solid fa-unlock"></i></button> on <a href="https://unsplash.com/?utm_source=artist_reference_site&utm_medium=website" target="_blank">Unsplash</a></div>
+
+<!-- Forward and back Buttons -->
+<button id="backBtn">Back</button>
+<button id="nextBtn">Next</button>
+
+<script src="api/randomphoto.js"></script>
+</body>
+</html>
