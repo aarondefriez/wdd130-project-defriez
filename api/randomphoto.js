@@ -8,8 +8,14 @@ let playing = false;
 var timer = startTimer(30, "timer", function() {loadNext()});
 
 async function init() {
-    await fetchImage(); // 1st image fetched
-    await updateImage();        // now it's safe → history[0] exists
+    // Initilize elements
+    document.getElementById("pausesymbol").className = "fa-solid fa-pause";
+    timer.reset();
+    history = [];
+    index = 0;
+    // Fetch first image
+    await fetchImage();
+    await updateImage(); 
     fetchImage(); // preload next
 }
 
@@ -76,9 +82,6 @@ const buttons = document.getElementsByClassName("navigation");
 for (const btn of buttons) {
   btn.addEventListener("click", () => {
     prompt = btn.dataset.prompt;
-    timer.reset();
-    index = 0;
-    history = [];
     init();
   });
 }
@@ -86,9 +89,7 @@ for (const btn of buttons) {
 function search(ele) {
   if(event.key === 'Enter') {
     prompt = ele.value;
-    timer.reset();
-    history = [];
-    index = 0;
+
     init();
   }
 }
@@ -178,4 +179,3 @@ function handleSelect() {
 
 // Load first image
 init();
-document.getElementById("pausesymbol").className = "fa-solid fa-pause";
