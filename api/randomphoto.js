@@ -21,12 +21,13 @@ async function init() {
 
 // Load in a random image
 async function loadNext() {
-  if (index === history.length - 2) {
+  if (index > history.length - 2) return;
+  if (index == history.length - 2) {
     // Load new image
-      index++;
-      await updateImage();
-      fetchImage();
-      timer.reset();
+    index++;
+    await updateImage();
+    fetchImage();
+    timer.reset();
   } else {
     // Go forward in history
     index++;
