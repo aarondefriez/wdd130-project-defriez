@@ -1,15 +1,37 @@
 let history = [];
-let index = -1;
+let index = 0;
 let failsafe = 0;
-let prompt = "portrait"; 
+let prompt = "architecture"; 
 let username = "";
 let locked = false;
 let playing = false;
-var timer = startTimer(30, "timer", function() {loadRandom()});
+var timer = startTimer(30, "timer", function() {loadNext()});
+
+async function init() {
+    await fetchImage(); // 1st image fetched
+    await updateImage();        // now it's safe → history[0] exists
+    fetchImage(); // preload next
+}
 
 // Load in a random image
-async function loadRandom() {
-  const res = await fetch(`https://nodejs-serverless-function-e-git-2e5a20-aaron-defriezs-projects.vercel.app/api/fetchRandomImage?prompt=${prompt}&username=${username}&f=high`);
+async function loadNext() {
+  if (index === history.length - 2) {
+    // Load new image
+      index++;
+      await updateImage();
+      fetchImage();
+      timer.reset();
+  } else {
+    // Go forward in history
+    index++;
+    updateImage();
+    timer.reset();
+  }
+}
+
+async function fetchImage(){
+  // Fetch next image
+  const res = await fetch(`https://nodejs-serverless-function-e-git-2e5a20-aaron-defriezs-projects.vercel.app/api/fetchRandomImage?prompt=${prompt}&username=${username}&f=low`);
   const data = await res.json();
   const entry = {
     imgUrl: data.urls.regular,
@@ -24,24 +46,15 @@ async function loadRandom() {
     if(element.id == entry.id && failsafe < 3){
       // prevents too many requests
       failsafe++;
-      loadRandom();
+      fetchImage();
       return;
     }
   };
 
-  // If we're not at the end, truncate forward history
-  if (index < history.length - 1) {
-    history = history.slice(0, index + 1);
-  }
-
-  timer.reset();
-
   history.push(entry);
-  index++;
-  updateImage();
-  // Added in case of looping
   failsafe = 0;
 }
+
 // Update current image
 function updateImage() {
   const entry = history[index];
@@ -63,18 +76,20 @@ const buttons = document.getElementsByClassName("navigation");
 for (const btn of buttons) {
   btn.addEventListener("click", () => {
     prompt = btn.dataset.prompt;
-    loadRandom();
+    timer.reset();
+    index = 0;
     history = [];
-    index = -1;
+    init();
   });
 }
 
 function search(ele) {
   if(event.key === 'Enter') {
     prompt = ele.value;
-    loadRandom();
+    timer.reset();
     history = [];
-    index = -1;
+    index = 0;
+    init();
   }
 }
 
@@ -94,18 +109,12 @@ document.getElementById("backBtn").addEventListener("click", () => {
   if (index > 0) {
     index--;
     updateImage();
+    timer.reset();
   }
 });
 
 document.getElementById("nextBtn").addEventListener("click", () => {
-  if (index === history.length - 1) {
-    // Load new image
-    loadRandom();
-  } else {
-    // Go forward in history
-    index++;
-    updateImage();
-  }
+  loadNext();
 });
 
 // Timer
@@ -118,6 +127,7 @@ function startTimer(seconds, container, oncomplete) {
         if (timer) clearInterval(timer);
         startTime = new Date().getTime();
         timer = setInterval(obj.step,250);
+        obj.interval = timer;
     };
     obj.pause = function() {
         playing = false;
@@ -139,6 +149,7 @@ function startTimer(seconds, container, oncomplete) {
     obj.reset = function() {
       finished = false;
       ms = seconds*1000;
+      startTime = new Date().getTime();
       obj.resume();
     }
     obj.resume();
@@ -156,6 +167,15 @@ document.getElementById("pause").addEventListener("click", () => {
   }
 });
 
+var time = document.getElementById("timeselect");
+time.addEventListener('change', handleSelect) 
+function handleSelect() {
+  clearInterval(timer.interval);
+    var seconds = time.options[time.selectedIndex].value;
+    timer = startTimer(seconds, "timer", function() {loadNext()});
+    timer.reset();
+}   
+
 // Load first image
-loadRandom();
+init();
 document.getElementById("pausesymbol").className = "fa-solid fa-pause";

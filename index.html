@@ -9,12 +9,21 @@
 </head>
 <body>
 <!-- Logic is handled in Javascript just change the data-prompt value to change images that show up -->
-<button class = "navigation" data-prompt="portrait">Portraits</button>
+<button class = "navigation" data-prompt="Architecture">Architecture</button>
+<button class = "navigation" data-prompt="Portrait">Portriats</button>
 <button class = "navigation" data-prompt="Landscapes">Landscapes</button>
 
 <div><input type="text" placeholder="Search.." class="search" onkeydown="search(this)"/> <button id = "pause"><i id = "pausesymbol"></i></button></div>
 
 <div id="timer"></div>
+
+<!-- Value is time in seconds -->
+<select name="timeselect" id="timeselect">
+    <option value="30">30s</option>
+    <option value="60">1m</option>
+    <option value="300">5m</option>
+    <option value="600">10m</option>
+</select>
 
 <!-- Automatically updated image element with hotlink to orginal -->
 <a id="hotlink" target="_blank"><img id="photo" style="max-width:100%; display:block; margin-bottom:10px;"></a>
