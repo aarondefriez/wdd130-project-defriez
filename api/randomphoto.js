@@ -8,19 +8,26 @@ let playing = false;
 var timer = startTimer(30, "timer", function() {loadNext()});
 
 async function init() {
-    await fetchImage(); // 1st image fetched
-    await updateImage();        // now it's safe → history[0] exists
+    // Initilize elements
+    document.getElementById("pausesymbol").className = "fa-solid fa-pause";
+    timer.reset();
+    history = [];
+    index = 0;
+    // Fetch first image
+    await fetchImage();
+    await updateImage(); 
     fetchImage(); // preload next
 }
 
 // Load in a random image
 async function loadNext() {
-  if (index === history.length - 2) {
+  if (index > history.length - 2) return;
+  if (index == history.length - 2) {
     // Load new image
-      index++;
-      await updateImage();
-      fetchImage();
-      timer.reset();
+    index++;
+    await updateImage();
+    fetchImage();
+    timer.reset();
   } else {
     // Go forward in history
     index++;
@@ -31,7 +38,7 @@ async function loadNext() {
 
 async function fetchImage(){
   // Fetch next image
-  const res = await fetch(`https://nodejs-serverless-function-e-git-2e5a20-aaron-defriezs-projects.vercel.app/api/fetchRandomImage?prompt=${prompt}&username=${username}&f=low`);
+  const res = await fetch(`https://nodejs-serverless-function-e-git-2e5a20-aaron-defriezs-projects.vercel.app/api/fetchRandomImage?prompt=${prompt}&username=${username}&f=high`);
   const data = await res.json();
   const entry = {
     imgUrl: data.urls.regular,
@@ -76,9 +83,6 @@ const buttons = document.getElementsByClassName("navigation");
 for (const btn of buttons) {
   btn.addEventListener("click", () => {
     prompt = btn.dataset.prompt;
-    timer.reset();
-    index = 0;
-    history = [];
     init();
   });
 }
@@ -86,9 +90,6 @@ for (const btn of buttons) {
 function search(ele) {
   if(event.key === 'Enter') {
     prompt = ele.value;
-    timer.reset();
-    history = [];
-    index = 0;
     init();
   }
 }
@@ -98,9 +99,12 @@ document.getElementById("lock").addEventListener("click", () => {
   if (locked == true) {
     username = history[index].username;
     document.getElementById("locksymbol").className = "fa-solid fa-lock";
+    history = history.slice(0, (index + 1));
+    fetchImage();
   } else {
-    // Go forward in history
     username = "";
+    history.pop();
+    fetchImage();
     document.getElementById("locksymbol").className = "fa-solid fa-unlock";
   }
 });
@@ -178,4 +182,3 @@ function handleSelect() {
 
 // Load first image
 init();
-document.getElementById("pausesymbol").className = "fa-solid fa-pause";
