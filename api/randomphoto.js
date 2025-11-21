@@ -38,7 +38,7 @@ async function loadNext() {
 
 async function fetchImage(){
   // Fetch next image
-  const res = await fetch(`https://nodejs-serverless-function-e-git-2e5a20-aaron-defriezs-projects.vercel.app/api/fetchRandomImage?prompt=${prompt}&username=${username}&f=low`);
+  const res = await fetch(`https://nodejs-serverless-function-e-git-2e5a20-aaron-defriezs-projects.vercel.app/api/fetchRandomImage?prompt=${prompt}&username=${username}&f=high`);
   const data = await res.json();
   const entry = {
     imgUrl: data.urls.regular,
@@ -90,7 +90,6 @@ for (const btn of buttons) {
 function search(ele) {
   if(event.key === 'Enter') {
     prompt = ele.value;
-
     init();
   }
 }
@@ -100,9 +99,12 @@ document.getElementById("lock").addEventListener("click", () => {
   if (locked == true) {
     username = history[index].username;
     document.getElementById("locksymbol").className = "fa-solid fa-lock";
+    history = history.slice(0, (index + 1));
+    fetchImage();
   } else {
-    // Go forward in history
     username = "";
+    history.pop();
+    fetchImage();
     document.getElementById("locksymbol").className = "fa-solid fa-unlock";
   }
 });
