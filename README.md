@@ -1,4 +1,4 @@
-# wdd130-project-hayes
+# wdd130-project-defriez
 Artist reference website
 
 This webiste is created for my WDD130 class as a custom artist reference site.
