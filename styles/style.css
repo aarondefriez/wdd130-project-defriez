@@ -3,3 +3,14 @@ img{
     width: cover;
     margin-inline: 0 auto;
 }
+.topnav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* background-color: aqua;
+    border-radius: 500px; */
+}
+.topnav img {
+    height: 75px;
+    width: auto;
+}
