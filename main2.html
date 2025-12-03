@@ -10,8 +10,6 @@
 <body>
     <div class="topnav">
     <img src="image.png" alt="logo">
-    <h5>Prompt: ______________</h5>
-    
     <h1>Art Reference Site</h1>
 <!-- Logic is handled in Javascript just change the data-prompt value to change images that show up
 <button class = "navigation" data-prompt="Architecture">Architectures</button>
@@ -19,7 +17,8 @@
 <button class = "navigation" data-prompt="Landscapes">Landscapes</button>
 <button class = "navigation" data-prompt="Gestures">Gestures</button>
 <button class = "navigation" data-prompt="Designs">Designs</button> -->
-<button id = "pause"><i id = "pausesymbol"></i></button></div>
+
+<div><input type="text" placeholder="Search.." class="search" onkeydown="search(this)"/> <button id = "pause"><i id = "pausesymbol"></i></button></div>
 </div>
 <!-- Forward and back Buttons -->
 <button id="backBtn">Back</button>
