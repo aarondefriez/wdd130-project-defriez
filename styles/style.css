@@ -25,3 +25,45 @@ img{
     height: 100%;
     object-fit: cover;
 }
+/* No-op to ensure file exists before adding nav styles */
+
+/* Simple top navigation */
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: #111;
+    color: #fff;
+}
+
+.site-nav .brand {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+@media (max-width: 640px) {
+    .nav-links { display: none; }
+}

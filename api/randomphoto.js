@@ -60,6 +60,13 @@ async function fetchImage(){
 
   history.push(entry);
   failsafe = 0;
+  try{
+    // keep a small recent history in localStorage so other pages can import
+    const recent = (JSON.parse(localStorage.getItem('recentUnsplashHistory')||'[]')) || [];
+    recent.push(entry);
+    // limit to last 30
+    localStorage.setItem('recentUnsplashHistory', JSON.stringify(recent.slice(-30)));
+  }catch(e){/* ignore storage errors */}
 }
 
 // Update current image
