@@ -1,6 +1,9 @@
 img{
-    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
-    height: auto;    /* Automatically adjusts height to maintain aspect ratio */
+    /* max-width: 100%; Ensures the image doesn't exceed its container's width */
+    height: 75vh;
+    width: cover;
+    margin-inline: 0 auto;
+    margin: auto;
 }
 .topnav {
     display: flex;
@@ -13,7 +16,7 @@ img{
     height: 75px;
     width: auto;
 }
-.photo-container {
+/* .photo-container {
     text-align: center;
     margin-top: 20px;
     width: 300px;
@@ -24,7 +27,7 @@ img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
 /* No-op to ensure file exists before adding nav styles */
 
 /* Simple top navigation */
