@@ -66,13 +66,15 @@ img{
     padding: 6px 8px;
     border-radius: 4px;
 }
-
+.topnav i {
+    font-size: 35px;
+}
 .nav-links a:hover {
     background: rgba(255,255,255,0.06);
 }
     .toolbar {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         padding: 10px;
         border-bottom: 2px solid #000;
@@ -94,6 +96,7 @@ img{
         justify-self: end;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 10px;
     }
 
