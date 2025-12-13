@@ -90,7 +90,7 @@ a{color:var(--accent2); text-decoration:underline}
 
 .contact-card p{margin:10px 0 0 0; color:var(--muted)}
 
-/* small accent bar for header and subtle visual interest */
+
 .page-header::after{
 	content:'';
 	display:block;
@@ -106,5 +106,39 @@ a{color:var(--accent2); text-decoration:underline}
 	.about-card{min-height:200px}
 	.page-header h1{font-size:18px}
 	.card-inner{padding:16px}
+}
+
+
+.site-nav{
+	background: rgba(255,255,255,0.03);
+	border-bottom: 1px solid rgba(255,255,255,0.04);
+	position:relative; 
+}
+.site-nav .nav-inner{
+	max-width:var(--max-width);
+	margin:0 auto;
+	display:flex;
+	align-items:center;
+	justify-content:flex-end; 
+	padding:8px 12px;
+}
+.nav-logo{
+	height:64px;
+	display:block;
+	background:transparent;
+}
+.nav-links a{
+	color:var(--card-bg);
+	text-decoration:none;
+	margin-left:18px;
+	font-weight:600;
+}
+.logo-link{display:flex;align-items:center;position:absolute;left:12px;top:50%;transform:translateY(-50%);} 
+
+@media (max-width:480px){
+	.nav-inner{padding:8px}
+	.nav-links a{margin-left:10px;font-size:14px}
+	.nav-logo{height:40px}
+	.logo-link{left:8px}
 }
 
