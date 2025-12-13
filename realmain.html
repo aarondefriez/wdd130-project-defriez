@@ -8,20 +8,29 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="nav-left">
+            <a class="brand" href="main2.html">Art Reference</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="realmain.html">Home</a></li>
+            <li><a href="subpage1.html">Resources</a></li>
+            <li><a href="subpage2.html">About Me</a></li>
+        </ul>
+    </nav>
     <div class="topnav">
-    <img src="image.png" alt="logo">
-    <h5>Prompt: ______________</h5>
-    
+    <img src="images/logo.png" alt="logo">
     <h1>Art Reference Site</h1>
-<!-- Logic is handled in Javascript just change the data-prompt value to change images that show up
+Logic is handled in Javascript just change the data-prompt value to change images that show up
 <button class = "navigation" data-prompt="Architecture">Architectures</button>
 <button class = "navigation" data-prompt="Portrait">Portraits</button>
 <button class = "navigation" data-prompt="Landscapes">Landscapes</button>
 <button class = "navigation" data-prompt="Gestures">Gestures</button>
 <button class = "navigation" data-prompt="Designs">Designs</button> -->
-<button id = "pause"><i id = "pausesymbol"></i></button></div>
+
+<!-- <div><input type="text" placeholder="Search.." class="search" onkeydown="search(this)"/> <button id = "pause"><i id = "pausesymbol"></i></button></div>
 </div>
-<!-- Forward and back Buttons -->
+Forward and back Buttons -->
 <button id="backBtn">Back</button>
 <button id="nextBtn">Next</button>
 <div id="timer"></div>
@@ -33,6 +42,29 @@
     <option value="300">5m</option>
     <option value="600">10m</option>
 </select>
+</head>
+<body>
+
+    <div class="toolbar">
+
+        <div class="left-section">
+            <img src="images/logo.png" alt="logo" height="30">
+            <h3>Art Ref Site</h3>
+        </div>
+
+        <div class="center-section">
+            <input type="text" placeholder="Search..." class="search-bar">
+        </div>
+
+        <div class="right-section">
+            <button title="Pause"> &#10074;&#10074; </button>
+            <button title="Stop"> &#9632; </button>
+            <button title="Back"> &#9664; </button>
+            <div class="timer-box">00:30</div>
+            <button title="Next"> &#9654; </button>
+        </div>
+
+    </div>
 <div class="photo-container">
 <!-- Automatically updated image element with hotlink to orginal -->
 <a id="hotlink" target="_blank"><img id="photo" style="max-width:100%; display:block; margin-bottom:10px;"></a>
