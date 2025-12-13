@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Defriez</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- <nav class="site-nav">
+        <div class="nav-left">
+            <a class="brand" href="main2.html">Art Reference</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="realmain.html">Home</a></li>
+            <li><a href="subpage1.html">Subpage 1</a></li>
+            <li><a href="subpage2.html">About Me</a></li>
+        </ul>
+    </nav> -->
+
+    <!-- <div class="topnav">
+        <img src="images/logo.png" alt="logo">
+        <h1>Art Reference Site</h1>
+        Logic is handled in Javascript just change the data-prompt value to change images that show up
+        <button class="navigation" data-prompt="Architecture">Architectures</button>
+        <button class="navigation" data-prompt="Portrait">Portraits</button>
+        <button class="navigation" data-prompt="Landscapes">Landscapes</button>
+        <button class="navigation" data-prompt="Gestures">Gestures</button>
+        <button class="navigation" data-prompt="Designs">Designs</button> -->
+
+        <!-- </div> -->
+
+    <!-- Forward and back Buttons -->
+     <!-- <button id="backBtn">Back</button>
+    <button id="nextBtn">Next</button>
+    <div id="timer"></div> -->
+
+    <!-- <select name="timeselect" id="timeselect">
+        <option value="30">30s</option>
+        <option value="60">1m</option>
+        <option value="300">5m</option>
+        <option value="600">10m</option>
+    </select> -->
+
+    <div class="toolbar">
+        <div class="left-section">
+            <img src="images/logo.png" alt="logo" height="30">
+            <h3>Art Ref Site</h3>
+        </div>
+
+        <div class="center-section">
+            <input type="text" placeholder="Search..." class="search-bar">
+        </div>
+
+        <div class="right-section">
+            <button title="Pause"> &#10074;&#10074; </button>
+            <button title="Stop"> &#9632; </button>
+            <button title="Back"> &#9664; </button>
+            <div class="timer-box">00:30</div>
+            <button title="Next"> &#9654; </button>
+        </div>
+    </div>
+
+    <div class="photo-container">
+        <a id="hotlink" target="_blank">
+            <img id="photo" style="max-width:100%; display:block; margin-bottom:10px;">
+        </a>
+        <div>
+            Photo by <a id="creator" target="_blank"></a> 
+            <button id="lock"><i id="locksymbol" class="fa-solid fa-unlock"></i></button> 
+            on <a href="https://unsplash.com/?utm_source=artist_reference_site&utm_medium=website" target="_blank">Unsplash</a>
+        </div>
+    </div>
+
+    <script src="api/randomphoto.js"></script>
+</body>
+</html>
