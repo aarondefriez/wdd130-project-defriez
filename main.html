@@ -21,27 +21,16 @@
     <div class="topnav">
     <img src="images/logo.png" alt="logo">
     <h1>Art Reference Site</h1>
-Logic is handled in Javascript just change the data-prompt value to change images that show up
+<!-- Logic is handled in Javascript just change the data-prompt value to change images that show up -->
 <button class = "navigation" data-prompt="Architecture">Architectures</button>
 <button class = "navigation" data-prompt="Portrait">Portraits</button>
 <button class = "navigation" data-prompt="Landscapes">Landscapes</button>
 <button class = "navigation" data-prompt="Gestures">Gestures</button>
-<button class = "navigation" data-prompt="Designs">Designs</button> -->
+<button class = "navigation" data-prompt="Designs">Designs</button>
 
-<!-- <div><input type="text" placeholder="Search.." class="search" onkeydown="search(this)"/> <button id = "pause"><i id = "pausesymbol"></i></button></div>
-</div>
-Forward and back Buttons -->
-<button id="backBtn">Back</button>
-<button id="nextBtn">Next</button>
-<div id="timer"></div>
+<!-- <div><input type="text" placeholder="Search.." class="search" onkeydown="search(this)"/> <button id = "pause"><i id = "pausesymbol"></i></button></div> -->
+</div>  
 
-<!-- Value is time in seconds -->
-<select name="timeselect" id="timeselect">
-    <option value="30">30s</option>
-    <option value="60">1m</option>
-    <option value="300">5m</option>
-    <option value="600">10m</option>
-</select>
 </head>
 <body>
 
@@ -53,15 +42,21 @@ Forward and back Buttons -->
         </div>
 
         <div class="center-section">
-            <input type="text" placeholder="Search..." class="search-bar">
+            <input type="text" placeholder="Search..." class="search-bar" onkeydown="search(this)"/>>
         </div>
 
         <div class="right-section">
-            <button title="Pause"> &#10074;&#10074; </button>
-            <button title="Stop"> &#9632; </button>
-            <button title="Back"> &#9664; </button>
-            <div class="timer-box">00:30</div>
-            <button title="Next"> &#9654; </button>
+            <select name="timeselect" id="timeselect">
+                <option value="30">30s</option>
+                <option value="60">1m</option>
+                <option value="300">5m</option>
+                <option value="600">10m</option>
+            </select>
+            <button id="pause"> <i id = "pausesymbol"> </button>
+            <a href="index.html"><button title="Stop"> &#9632; </button></a>
+            <button id="backBtn"> &#9664; </button>
+            <div id="timer"></div>
+            <button id="nextBtn"> &#9654; </button>
         </div>
 
     </div>

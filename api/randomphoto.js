@@ -77,8 +77,6 @@ function updateImage() {
 
   // Enable/disable buttons depending on position
   document.getElementById("backBtn").disabled = index <= 0;
-  document.getElementById("nextBtn").innerText = 
-    index === history.length - 1 ? "Next (new)" : "Next (new)";
   // Add creators information
   document.getElementById("creator").href = entry.userurl;
   document.getElementById("creator").innerText = entry.name;
