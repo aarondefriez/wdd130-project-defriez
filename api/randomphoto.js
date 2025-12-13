@@ -186,6 +186,12 @@ function handleSelect() {
     timer = startTimer(seconds, "timer", function() {loadNext()});
     timer.reset();
 }   
+// Get query information
+const params = new URLSearchParams(window.location.search);
+
+if (params.has("prompt")) {
+  prompt = params.get("prompt");
+}
 
 // Load first image
 init();
